@@ -1,5 +1,6 @@
 //KNN
 // TODO: export { default as KNNImageClassifier } from "./models/KNNImageClassifier.svelte";
+import '@tensorflow/tfjs-backend-webgl';
 
 // Image classification
 export { default as ImageClassifier } from './models/classifications/ImageClassifier.svelte';
@@ -37,7 +38,6 @@ export {
 } from './models/segmentation/HandPoseDetection.svelte';
 export {
   default as FaceMesh,
-  drawFaceMeshOnCanvas,
 } from './models/segmentation/FaceMesh.svelte';
 
 // General
@@ -46,3 +46,4 @@ export { default as AutoMLObjectDetect } from './models/automl/AutoMLObjectDetec
 export { default as AutoMLImageClassifier } from './models/automl/AutoMLImageClassifier.svelte';
 
 export { drawBoundingBox, drawKeypoints, drawSkeleton } from './utils/PoseUtils';
+export { drawFaceMeshOnCanvas } from './utils/FaceUtils';

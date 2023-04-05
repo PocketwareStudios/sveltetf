@@ -1,16 +1,22 @@
-import type * as facemesh from "@tensorflow-models/facemesh";
+import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
 import { ScatterGL } from 'scatter-gl';
 
 import { TRIANGULATION } from "./Triangulation";
 
 let scatterGL: ScatterGL;
 
-function drawPath(ctx: CanvasRenderingContext2D, points: [number, number, number][], closePath: boolean) {
+function drawPath(
+  ctx: CanvasRenderingContext2D,
+  wf: number,
+  hf: number,
+  points: faceLandmarksDetection.Keypoint[],
+  closePath: boolean,
+) {
   const region = new Path2D();
-  region.moveTo(points[0][0], points[0][1]);
+  region.moveTo(points[0].x * wf, points[0].y * hf);
   for (let i = 1; i < points.length; i++) {
     const point = points[i];
-    region.lineTo(point[0], point[1]);
+    region.lineTo(point.x * wf, point.y * hf);
   }
 
   if (closePath) {
@@ -20,8 +26,10 @@ function drawPath(ctx: CanvasRenderingContext2D, points: [number, number, number
 }
 
 export function drawFaceMeshOnCanvas(
-  predictions: facemesh.AnnotatedPrediction[],
+  predictions: faceLandmarksDetection.Face[],
   outputCanvas: HTMLCanvasElement | OffscreenCanvas,
+  wf: number,
+  hf: number,
   maxFaces = 2,
   triangulateMesh = true,
 ) {
@@ -44,7 +52,7 @@ export function drawFaceMeshOnCanvas(
 
     for (let index = 0; index < predictions.length; index++) {
       const prediction = predictions[index];
-      const keypoints = prediction.scaledMesh as [number, number, number][]; // faceMesh Coords3D
+      const keypoints = prediction.keypoints; // faceMesh Coords3D
 
       if (state.triangulateMesh) {
         for (let i = 0; i < TRIANGULATION.length / 3; i++) {
@@ -54,12 +62,12 @@ export function drawFaceMeshOnCanvas(
             TRIANGULATION[i * 3 + 2],
           ].map((index) => keypoints[index]);
 
-          drawPath(ctx, points, true);
+          drawPath(ctx, wf, hf, points, true);
         }
       } else {
         for (let i = 0; i < keypoints.length; i++) {
-          const x = keypoints[i][0];
-          const y = keypoints[i][1];
+          const x = keypoints[i].x;
+          const y = keypoints[i].y;
 
           ctx.beginPath();
           ctx.arc(x, y, 1 /* radius */, 0, 2 * Math.PI);
@@ -70,8 +78,8 @@ export function drawFaceMeshOnCanvas(
 
     if (state.renderPointcloud && scatterGL != null) {
       const pointsData = predictions.map((prediction) => {
-        const scaledMesh = prediction.scaledMesh as [number, number, number][];
-        return scaledMesh.map((point) => [-point[0], -point[1], -point[2]]) as [number, number, number][];
+        const scaledMesh = prediction.keypoints;
+        return scaledMesh.map((point) => [-point.x, -point.y, -(point?.z || 0)]) as [number, number, number][];
       });
 
       let flattenedPointsData: [number, number, number][] = [];

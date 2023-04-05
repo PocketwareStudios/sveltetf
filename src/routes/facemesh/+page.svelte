@@ -6,6 +6,8 @@
 	let loading = false;
 	let loadingModel = false;
 	let camReady = false;
+  let wf = 1;
+  let hf = 1;
 	const tryVideoCamara = async () => {
 		try {
 			loading = true;
@@ -27,11 +29,12 @@
 	function onMesh(mesh: any) {
 		if (drawCanvas == null) return;
 		// redraw the current state on the the test canvas
-		const dstCxt = drawCanvas?.getContext('2d');
-		if (dstCxt != null && camRef != null) dstCxt.drawImage(camRef, 0, 0);
+		const dstCxt = drawCanvas.getContext('2d');
+		if (dstCxt == null) return;
+    dstCxt.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
 
 		// draw mesh over the test canvas
-		drawFaceMeshOnCanvas(mesh.detail, drawCanvas);
+		drawFaceMeshOnCanvas(mesh.detail, drawCanvas, wf, hf);
 	}
 
 	function modelLoadStarted(event: any) {
@@ -41,6 +44,13 @@
 	function modelLoadFinished(event: any) {
 		loadingModel = false;
 	}
+
+  $: {
+		if (camReady && camRef != null && drawCanvas != null) {
+      wf = drawCanvas.width / camRef.videoWidth;
+      hf = drawCanvas.height / camRef.videoHeight;
+    }
+  }
 </script>
 
 <div style="display: flex; flex-direction: column; width: 100%; justify-content: center; align-items: center;">

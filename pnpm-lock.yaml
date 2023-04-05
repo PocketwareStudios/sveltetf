@@ -7,9 +7,9 @@ dependencies:
   '@tensorflow-models/coco-ssd':
     specifier: ^2.2.2
     version: 2.2.2(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0)
-  '@tensorflow-models/facemesh':
-    specifier: ^0.0.5
-    version: 0.0.5(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0)
+  '@tensorflow-models/face-landmarks-detection':
+    specifier: ^1.0.2
+    version: 1.0.2(@mediapipe/face_mesh@0.4.1633559619)(@tensorflow-models/face-detection@1.0.1)(@tensorflow/tfjs-backend-webgl@4.2.0)(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0)
   '@tensorflow-models/handpose':
     specifier: ^0.0.7
     version: 0.0.7(@tensorflow/tfjs-backend-webgl@4.2.0)(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0)
@@ -435,6 +435,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@mediapipe/face_detection@0.4.1646425229:
+    resolution: {integrity: sha512-aeCN+fRAojv9ch3NXorP6r5tcGVLR3/gC1HmtqB0WEZBRXrdP6/3W/sGR0dHr1iT6ueiK95G9PVjbzFosf/hrg==}
+    dev: false
+
+  /@mediapipe/face_mesh@0.4.1633559619:
+    resolution: {integrity: sha512-Vc8cdjxS5+O2gnjWH9KncYpUCVXT0h714KlWAsyqJvJbIgUJBqpppbIx8yWcAzBDxm/5cYSuBI5p5ySIPxzcEg==}
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -545,16 +553,6 @@ packages:
       - supports-color
     dev: true
 
-  /@tensorflow-models/blazeface@0.0.5(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0):
-    resolution: {integrity: sha512-bIMJDV2CD8rr7v9OrIDdDZVh9sbk0EhlZdHaDFpgWUw3Lp21wUN7GSifOJVE5hV2ngmpzM+J12OH8bG1GZoDag==}
-    peerDependencies:
-      '@tensorflow/tfjs-converter': ^1.5.2
-      '@tensorflow/tfjs-core': ^1.5.2
-    dependencies:
-      '@tensorflow/tfjs-converter': 4.2.0(@tensorflow/tfjs-core@4.2.0)
-      '@tensorflow/tfjs-core': 4.2.0
-    dev: false
-
   /@tensorflow-models/body-pix@2.2.0(@tensorflow/tfjs-backend-webgl@4.2.0)(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0):
     resolution: {integrity: sha512-e8PEf8xWlWhXJtGvlTQpdRyUuDXKAFJT/f8SWiBfvim5BAUyFp2dTeVV3gjDDp8MUEo7T3lofTZUexy/aG4YEA==}
     peerDependencies:
@@ -577,14 +575,33 @@ packages:
       '@tensorflow/tfjs-core': 4.2.0
     dev: false
 
-  /@tensorflow-models/facemesh@0.0.5(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0):
-    resolution: {integrity: sha512-5zn3QxZfMEkUEXDQ1fqjKxK63WpwikwH/SuZpGiNkRjgronkbmCqc/UsLfAPrJjxqcyfRoO+u5fUuqhKe1wyTw==}
-    deprecated: This package has been archived in favor of @tensorflow-models/face-landmarks-detection and will no longer be updated. Please refer to @tensorflow-models/face-landmarks-detection for future updates.
+  /@tensorflow-models/face-detection@1.0.1(@mediapipe/face_detection@0.4.1646425229)(@tensorflow/tfjs-backend-webgl@4.2.0)(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0):
+    resolution: {integrity: sha512-oIEEqHy4qbkGn5xT1ldzwxK5s948+t7ts0+WoIfTPKwScpNa8YY4GJf+fpyhtOxUGGAZymXx25jrvF9YlAt9dg==}
     peerDependencies:
-      '@tensorflow/tfjs-converter': ^2.1.0
-      '@tensorflow/tfjs-core': ^2.1.0
+      '@mediapipe/face_detection': ~0.4.0
+      '@tensorflow/tfjs-backend-webgl': ^3.14.0
+      '@tensorflow/tfjs-converter': ^3.14.0
+      '@tensorflow/tfjs-core': ^3.14.0
     dependencies:
-      '@tensorflow-models/blazeface': 0.0.5(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0)
+      '@mediapipe/face_detection': 0.4.1646425229
+      '@tensorflow/tfjs-backend-webgl': 4.2.0(@tensorflow/tfjs-core@4.2.0)
+      '@tensorflow/tfjs-converter': 4.2.0(@tensorflow/tfjs-core@4.2.0)
+      '@tensorflow/tfjs-core': 4.2.0
+      rimraf: 3.0.2
+    dev: false
+
+  /@tensorflow-models/face-landmarks-detection@1.0.2(@mediapipe/face_mesh@0.4.1633559619)(@tensorflow-models/face-detection@1.0.1)(@tensorflow/tfjs-backend-webgl@4.2.0)(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0):
+    resolution: {integrity: sha512-e10xKlBssv2nYg8hV93rNg7ne8NIJVT9Y1d/bpUCcBpPLJpykLw2DQ3nfPnoBpqhKDykFtKDGQVmeXvqc7H+KA==}
+    peerDependencies:
+      '@mediapipe/face_mesh': ~0.4.0
+      '@tensorflow-models/face-detection': ~1.0.0
+      '@tensorflow/tfjs-backend-webgl': ^3.12.0
+      '@tensorflow/tfjs-converter': ^3.12.0
+      '@tensorflow/tfjs-core': ^3.12.0
+    dependencies:
+      '@mediapipe/face_mesh': 0.4.1633559619
+      '@tensorflow-models/face-detection': 1.0.1(@mediapipe/face_detection@0.4.1646425229)(@tensorflow/tfjs-backend-webgl@4.2.0)(@tensorflow/tfjs-converter@4.2.0)(@tensorflow/tfjs-core@4.2.0)
+      '@tensorflow/tfjs-backend-webgl': 4.2.0(@tensorflow/tfjs-core@4.2.0)
       '@tensorflow/tfjs-converter': 4.2.0(@tensorflow/tfjs-core@4.2.0)
       '@tensorflow/tfjs-core': 4.2.0
       rimraf: 3.0.2

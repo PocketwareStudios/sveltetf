@@ -4,7 +4,7 @@
 
 ### :warning: W.I.P. not ready for production use :warning:
 
-![sveltetf](https://github.com/eksohinc/sveltetf/tree/main/static/svelteml.png?raw=true)
+![sveltetf](https://github.com/eksohinc/sveltetf/tree/main/static/sveltetf.png?raw=true)
 
 ## Overview 🤖 📖
 

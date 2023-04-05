@@ -1,10 +1,10 @@
 # SvelteTF <small>0.0.1</small>
 
-## this is a typescript version of the library build by John Kane: https://github.com/john--kane/svelteml
+## this is a typescript version of the library built by John Kane: https://github.com/john--kane/svelteml
 
 ### :warning: W.I.P. not ready for production use :warning:
 
-![sveltetf](https://github.com/eksohinc/sveltetf/tree/main/static/sveltetf.png?raw=true)
+![sveltetf](https://raw.githubusercontent.com/eksohinc/sveltetf/main/static/sveltetf.png)
 
 ## Overview 🤖 📖
 

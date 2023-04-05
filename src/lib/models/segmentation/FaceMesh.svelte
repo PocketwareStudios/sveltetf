@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import ScatterGL from 'scatter-gl';
+  import { ScatterGL } from 'scatter-gl';
 
   let model: facemesh.FaceMesh;
   let scatterGL: ScatterGL;

@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type * as tf from "@tensorflow/tfjs-core";
   import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
   import { onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
 
-  let model: faceLandmarksDetection.faceLandmarksDetection;
+  let model: faceLandmarksDetection.FaceLandmarksDetector;
 
   const dispatch = createEventDispatcher();
 

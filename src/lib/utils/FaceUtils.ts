@@ -1,4 +1,4 @@
-import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
+import type * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
 import { ScatterGL } from 'scatter-gl';
 
 import { TRIANGULATION } from "./Triangulation";

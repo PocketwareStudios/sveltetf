@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { FaceMesh, drawFaceMeshOnCanvas } from '$lib';
 
+	let supported = navigator != null;
 	let camRef: HTMLVideoElement | null = null;
 	let drawCanvas: HTMLCanvasElement | null = null;
 	let loading = false;
@@ -54,15 +55,12 @@
 </script>
 
 <div style="display: flex; flex-direction: column; width: 100%; justify-content: center; align-items: center;">
-  {#if camRef?.srcObject === null && !loading}
+  {#if supported && camRef?.srcObject === null && !loading}
     <button style="width: 200px" on:click={tryVideoCamara}>START WEBCAM</button>
   {/if}
   <div style="position: relative; display: flex; justify-content: center;">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <!-- <video height={152} class="max-h-[152px]" bind:this={videoSource} /> -->
-    <!-- <canvas class="absolute h-full w-full" bind:this={drawCanvas} /> -->
     <video height={600} style="max-height: 600px" bind:this={camRef} />
-    <!-- style="background-color: #ff000013;" -->
     <canvas style="position: absolute; width: 100%; height: 100%" bind:this={drawCanvas} />
     {#if camReady}
       <FaceMesh
@@ -80,6 +78,11 @@
     {#if loadingModel}
       <div style="position: absolute">
         <h1>loading model...</h1>
+      </div>
+    {/if}
+    {#if !supported}
+      <div style="position: absolute">
+        <h1>unsupported.</h1>
       </div>
     {/if}
   </div>

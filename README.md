@@ -2,7 +2,7 @@
 
 ## this is a typescript version of the library built by John Kane: https://github.com/john--kane/svelteml
 
-### :warning: W.I.P. not ready for production use :warning:
+## :warning: W.I.P. not ready for production use :warning:
 
 ![sveltetf](https://raw.githubusercontent.com/eksohinc/sveltetf/main/static/sveltetf.png)
 

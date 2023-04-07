@@ -1,13 +1,21 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
 	webServer: {
-		command: 'npm run build:test',
+		command: 'pnpm run build && pnpm run preview',
 		port: 4173,
 	},
 	use: {
-		trace: 'on-first-retry',
+    video: 'on-first-retry',
 	},
+  // Configure projects for major browsers.
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
 	testDir: 'tests',
 };
 

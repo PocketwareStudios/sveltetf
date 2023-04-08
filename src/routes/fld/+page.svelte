@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FaceMesh, drawFaceMeshOnCanvas } from '$lib';
+	import { FaceLandmarksDetection, drawFaceMeshOnCanvas } from '$lib';
 
 	let supported = navigator != null;
 	let camRef: HTMLVideoElement | null = null;
@@ -63,7 +63,7 @@
     <video height={600} style="max-height: 600px" bind:this={camRef} />
     <canvas style="position: absolute; width: 100%; height: 100%" bind:this={drawCanvas} />
     {#if camReady}
-      <FaceMesh
+      <FaceLandmarksDetection
         image={camRef}
         on:meshesReceived={onMesh}
         on:modelLoadStarted={modelLoadStarted}

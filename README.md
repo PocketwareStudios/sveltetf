@@ -33,7 +33,7 @@ The purpose of SvelteTF is to offer simple Components that can make ML more acce
 
 - [x] Blur Body Parts
 - [x] Bokeh Effect
-- [x] Face Mesh
+- [x] Face Landmarks Detection
 - [x] Hand Pose Detection
 
 ## Experiments

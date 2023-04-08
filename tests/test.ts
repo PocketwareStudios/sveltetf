@@ -10,8 +10,8 @@ import { expect, test } from '@playwright/test';
 			expect(await page.textContent('h1')).toBe('Face Mesh');
 		});
 
-		test('facemesh page has expected button', async ({ page }) => {
-			await page.goto('/facemesh');
+		test('fld page has expected button', async ({ page }) => {
+			await page.goto('/fld');
 			expect(await page.textContent('button')).toBe('START WEBCAM');
 		});
 // 	});

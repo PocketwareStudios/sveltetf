@@ -1,5 +1,5 @@
 <script lang="ts">
-  const faceMesh = {
+  const fld = {
     title: 'face-landmarks-detection',
     desc: `
       <h1>Face Landmarks Detection</h1>
@@ -7,12 +7,12 @@
       <p>Currently, we provide 1 model option: MediaPipe.</p>
       <p>MediaPipe Facemesh can detect multiple faces, each face contains 468 keypoints.</p>
     `,
-    link: '/facemesh',
+    link: '/fld',
   };
 
-  let title = faceMesh.title;
-  let desc = faceMesh.desc;
-  let link = faceMesh.link;
+  let title = fld.title;
+  let desc = fld.desc;
+  let link = fld.link;
 </script>
 
 <header>

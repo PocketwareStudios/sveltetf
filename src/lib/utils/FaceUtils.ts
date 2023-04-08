@@ -52,7 +52,7 @@ export function drawFaceMeshOnCanvas(
 
     for (let index = 0; index < predictions.length; index++) {
       const prediction = predictions[index];
-      const keypoints = prediction.keypoints; // faceMesh Coords3D
+      const keypoints = prediction.keypoints;
 
       if (state.triangulateMesh) {
         for (let i = 0; i < TRIANGULATION.length / 3; i++) {

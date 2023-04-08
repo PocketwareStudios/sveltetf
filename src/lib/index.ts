@@ -37,8 +37,8 @@ export {
   drawHandKeypoints,
 } from './models/segmentation/HandPoseDetection.svelte';
 export {
-  default as FaceMesh,
-} from './models/segmentation/FaceMesh.svelte';
+  default as FaceLandmarksDetection,
+} from './models/segmentation/FaceLandmarksDetection.svelte';
 
 // General
 

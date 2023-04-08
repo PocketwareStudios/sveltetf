@@ -1,4 +1,4 @@
-# SvelteTF <small>0.0.1</small>
+# SvelteTF
 
 ## this is a typescript version of the library built by John Kane: https://github.com/john--kane/svelteml
 

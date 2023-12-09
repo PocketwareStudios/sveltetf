@@ -4,6 +4,8 @@
 
 ## :warning: W.I.P. not ready for production use :warning:
 
+## :warning: For personal use and focusing on face detection for now... :warning:
+
 ![sveltetf](https://raw.githubusercontent.com/eksohinc/sveltetf/main/static/sveltetf.png)
 
 ## Overview 🤖 📖

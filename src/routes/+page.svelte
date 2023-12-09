@@ -1,18 +1,18 @@
 <script lang="ts">
-  const fld = {
-    title: 'face-landmarks-detection',
-    desc: `
-      <h1>Face Landmarks Detection</h1>
-      <p>This package provides models for running real-time face detection and landmark tracking.</p>
-      <p>Currently, we provide 1 model option: MediaPipe.</p>
-      <p>MediaPipe Facemesh can detect multiple faces, each face contains 468 keypoints.</p>
-    `,
-    link: '/fld',
-  };
+  const products = [
+		{
+			title: 'mediapipe',
+			desc: `
+				<h1>MediaPipe 2023</h1>
+				<p>MediaPipe Solutions allows you to apply machine learning (ML) solutions to your apps, with a framework that lets you configure pre-built processing pipelines to get immediate, engaging, and useful output for your users. You can even customize these solutions using Model Maker to update the default models.</p>
+				<p>Currently, we provide 1 model option: face_landmarker.</p>
+				<p>The MediaPipe Face Landmarker task lets you detect face landmarks and facial expressions in images and videos.</p>
+			`,
+			link: '/mediapipe',
+		},
+	];
 
-  let title = fld.title;
-  let desc = fld.desc;
-  let link = fld.link;
+	let prodIdx = 0;
 </script>
 
 <header>
@@ -22,14 +22,15 @@
 <section>
 	<nav>
 		<ul>
-			<li><a href={link}>{title}</a></li>
-			<!-- <li><a href="#">other</a></li>
-      <li><a href="#">other more</a></li> -->
+			{#each products as prod, idx}
+				<li><button style="margin-Bottom: 12px;" on:click={() => prodIdx = idx}>{prod.title}</button></li>
+			{/each}
 		</ul>
 	</nav>
 
   <article>
-    {@html desc}
+    {@html products[prodIdx].desc}
+		<a href={products[prodIdx].link}>try</a>
   </article>
 </section>
 

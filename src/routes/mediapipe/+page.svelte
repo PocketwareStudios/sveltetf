@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FaceLandmarksDetection, drawFaceMeshOnCanvas } from '$lib';
+	import { MediaPipe, drawPmFaceMeshOnCanvas } from '$lib';
 
 	let supported = navigator != null;
 	let camRef: HTMLVideoElement | null = null;
@@ -21,7 +21,8 @@
 				};
 			}
 			loading = false;
-		} catch (error) {
+		}
+    catch (error) {
 			console.log('>-> Webcam error:', error);
 		}
 	};
@@ -35,7 +36,7 @@
     dstCxt.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
 
 		// draw mesh over the test canvas
-		drawFaceMeshOnCanvas(mesh.detail, drawCanvas, wf, hf);
+		drawPmFaceMeshOnCanvas(mesh.detail, drawCanvas, wf, hf);
 	}
 
 	function modelLoadStarted(event: any) {
@@ -63,7 +64,7 @@
     <video height={600} style="max-height: 600px" bind:this={camRef} />
     <canvas style="position: absolute; width: 100%; height: 100%" bind:this={drawCanvas} />
     {#if camReady}
-      <FaceLandmarksDetection
+      <MediaPipe
         image={camRef}
         on:meshesReceived={onMesh}
         on:modelLoadStarted={modelLoadStarted}

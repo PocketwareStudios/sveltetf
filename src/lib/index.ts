@@ -36,9 +36,7 @@ export {
   // FingerLookupIndices,
   drawHandKeypoints,
 } from './models/segmentation/HandPoseDetection.svelte';
-export {
-  default as FaceLandmarksDetection,
-} from './models/segmentation/FaceLandmarksDetection.svelte';
+export { default as MediaPipe } from './models/segmentation/MediaPipe.svelte';
 
 // General
 
@@ -46,4 +44,4 @@ export { default as AutoMLObjectDetect } from './models/automl/AutoMLObjectDetec
 export { default as AutoMLImageClassifier } from './models/automl/AutoMLImageClassifier.svelte';
 
 export { drawBoundingBox, drawKeypoints, drawSkeleton } from './utils/PoseUtils';
-export { drawFaceMeshOnCanvas } from './utils/FaceUtils';
+export { drawFaceMeshOnCanvas, drawPmFaceMeshOnCanvas } from './utils/FaceUtils';
